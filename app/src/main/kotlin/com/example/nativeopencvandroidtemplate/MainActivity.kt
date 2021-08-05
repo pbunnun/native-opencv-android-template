@@ -108,10 +108,10 @@ class MainActivity : Activity(), CameraBridgeViewBase.CvCameraViewListener2 {
 
     override fun onCameraFrame(frame: CameraBridgeViewBase.CvCameraViewFrame): Mat {
         // get current camera frame as OpenCV Mat object
-        val mat = frame.gray()
-
+        //val mat = frame.gray()
+        val mat = frame.rgba()
         // native call to process current camera frame
-        adaptiveThresholdFromJNI(mat.nativeObjAddr)
+        //adaptiveThresholdFromJNI(mat.nativeObjAddr)
 
         // return processed frame for live preview
         return mat

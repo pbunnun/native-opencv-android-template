@@ -17,7 +17,7 @@ This sample Android application displays a live camera feed with an OpenCV *adap
 | [Kotlin](https://kotlinlang.org/docs/reference/) | 1.5.30-M1
 | [Gradle](https://gradle.org) | 7.0.0
 | Mac OS | 10.15.7
-| Windows 10
+| Windows | 10
 ## How to use this repository
 
 1. [Download and Install Android Studio](https://developer.android.com/studio)
@@ -34,9 +34,9 @@ This sample Android application displays a live camera feed with an OpenCV *adap
  
 5. Link your *Android Studio* project to the *OpenCV Android SDK* you just downloaded :
     * Open [gradle.properties](gradle.properties) file and edit following line with your own *OpenCV Android SDK* directory path :
-    MacOS
+    * MacOS
           opencvsdk=/Users/Example/Downloads/OpenCV-android-sdk
-    Windows 10
+    * Windows 10
           opencvsdk=C\:\\Users\\username\\OpenCV-android-sdk
           
 6. Sync Gradle and run the application on your Android Device!
@@ -65,15 +65,15 @@ Here are the steps to follow to create a new Android Studio project with native 
     * Open [setting.gradle](settings.gradle) file and append these two lines.
     
           include ':opencv'
-      MacOS
+      * MacOS
           project(':opencv').projectDir = new File(opencvsdk + '/sdk')
-      Windows 10
+      * Windows 10
           project(':opencv').projectDir = new File(opencvsdk + '\\sdk')
       
     * Open [gradle.properties](gradle.properties) file and append following line. Do not forget to use correct *OpenCV Android SDK* path for your machine. 
-      MacOS
+      * MacOS
           opencvsdk=/Users/Example/Downloads/OpenCV-android-sdk
-      Windows 10
+      * Windows 10
           opencvsdk=C\:\\Users\\username\\OpenCV-android-sdk
    
     * Open [build.gradle](app/build.gradle) file and add `implementation project(path: ':opencv')` to dependencies section :
@@ -90,9 +90,9 @@ Here are the steps to follow to create a new Android Studio project with native 
     
           cppFlags "-frtti -fexceptions"
           abiFilters 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
-      MacOS
+      * MacOS
           arguments "-DOpenCV_DIR=" + opencvsdk + "/sdk/native"
-      Windows 10
+      * Windows 10
           arguments "-DOpenCV_DIR=" + opencvsdk + "\\sdk\\native"
 
 7. Add following config to [CMakeLists.txt](app/src/main/cpp/CMakeLists.txt) file :
