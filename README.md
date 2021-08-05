@@ -65,15 +65,22 @@ Here are the steps to follow to create a new Android Studio project with native 
     * Open [setting.gradle](settings.gradle) file and append these two lines.
     
           include ':opencv'
+
       * MacOS
+          
           project(':opencv').projectDir = new File(opencvsdk + '/sdk')
+      
       * Windows 10
+          
           project(':opencv').projectDir = new File(opencvsdk + '\\sdk')
       
     * Open [gradle.properties](gradle.properties) file and append following line. Do not forget to use correct *OpenCV Android SDK* path for your machine. 
       * MacOS
+          
           opencvsdk=/Users/Example/Downloads/OpenCV-android-sdk
+      
       * Windows 10
+      
           opencvsdk=C\:\\Users\\username\\OpenCV-android-sdk
    
     * Open [build.gradle](app/build.gradle) file and add `implementation project(path: ':opencv')` to dependencies section :
@@ -90,9 +97,13 @@ Here are the steps to follow to create a new Android Studio project with native 
     
           cppFlags "-frtti -fexceptions"
           abiFilters 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+      
       * MacOS
+      
           arguments "-DOpenCV_DIR=" + opencvsdk + "/sdk/native"
+      
       * Windows 10
+      
           arguments "-DOpenCV_DIR=" + opencvsdk + "\\sdk\\native"
 
 7. Add following config to [CMakeLists.txt](app/src/main/cpp/CMakeLists.txt) file :

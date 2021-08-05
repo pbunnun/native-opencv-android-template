@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import android.util.Log
 import android.view.SurfaceView
+import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import org.opencv.android.BaseLoaderCallback
@@ -102,6 +103,12 @@ class MainActivity : Activity(), CameraBridgeViewBase.CvCameraViewListener2 {
             mOpenCvCameraView!!.disableView()
     }
 
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        if( hasFocus )
+            hideSystemUI()
+    }
+
     override fun onCameraViewStarted(width: Int, height: Int) {}
 
     override fun onCameraViewStopped() {}
@@ -115,6 +122,21 @@ class MainActivity : Activity(), CameraBridgeViewBase.CvCameraViewListener2 {
 
         // return processed frame for live preview
         return mat
+    }
+
+    private fun hideSystemUI() {
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE
+                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_FULLSCREEN)
+    }
+
+    private fun showSystemUI() {
+        window.decorView.systemUiVisibility = ( View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
     }
 
     private external fun adaptiveThresholdFromJNI(matAddr: Long)
